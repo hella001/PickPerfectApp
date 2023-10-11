@@ -35,5 +35,8 @@ Public Class login
         registerForm.Show()
     End Sub
 
+    Private Sub login_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Application.Exit()
+    End Sub
 
 End Class

@@ -61,7 +61,6 @@ Public Class kriteria
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         Try
-
             Dim bulan As String = txtBulan.Text
             Dim selectedbulan As String = txtJumlah.Text
 
@@ -73,19 +72,32 @@ Public Class kriteria
 
             Call connect()
 
-            Dim query As String = "INSERT INTO data_penjualan (bulan, penjualan) VALUES (@Bulan, @Penjualan)"
-            Using cmd As New MySqlCommand(query, conn)
-                cmd.Parameters.AddWithValue("@Bulan", bulan)
-                cmd.Parameters.AddWithValue("@Penjualan", selectedbulan)
-                cmd.ExecuteNonQuery()
+            ' Periksa apakah bulan sudah ada dalam database
+            Dim queryCheckBulan As String = "SELECT COUNT(*) FROM data_penjualan WHERE bulan = @Bulan"
+            Using cmdCheckBulan As New MySqlCommand(queryCheckBulan, conn)
+                cmdCheckBulan.Parameters.AddWithValue("@Bulan", bulan)
+                Dim existingRowCount As Integer = Convert.ToInt32(cmdCheckBulan.ExecuteScalar())
+
+                If existingRowCount > 0 Then
+                    ' Bulan sudah ada dalam database, tampilkan pesan kesalahan
+                    MessageBox.Show("Bulan ini sudah ada dalam database.", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Else
+                    ' Bulan belum ada dalam database, simpan data
+                    Dim insertQuery As String = "INSERT INTO data_penjualan (bulan, penjualan) VALUES (@Bulan, @Penjualan)"
+                    Using cmd As New MySqlCommand(insertQuery, conn)
+                        cmd.Parameters.AddWithValue("@Bulan", bulan)
+                        cmd.Parameters.AddWithValue("@Penjualan", selectedbulan)
+                        cmd.ExecuteNonQuery()
+                    End Using
+
+                    MessageBox.Show("Data berhasil ditambahkan!")
+                    TampilkanSemuaData()
+
+                    ' Kosongkan semua TextBox
+                    txtJumlah.Text = ""
+                    txtBulan.Text = "Pilih Item"
+                End If
             End Using
-
-            MessageBox.Show("Data berhasil Ditambahkan!")
-            TampilkanSemuaData()
-
-            ' Kosongkan semua TextBox
-            txtJumlah.Text = ""
-            txtBulan.Text = "Pilih Item"
         Catch ex As Exception
             MessageBox.Show("Terjadi kesalahan: " & ex.Message)
         End Try
@@ -164,5 +176,15 @@ Public Class kriteria
         Dim hitungForm As New hitung()
         Me.Hide()
         hitungForm.ShowDialog()
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Dim keluarForm As New login()
+        Me.Hide()
+        keluarForm.Show()
+    End Sub
+
+    Private Sub kriteria_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Application.Exit()
     End Sub
 End Class

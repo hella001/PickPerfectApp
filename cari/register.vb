@@ -58,5 +58,8 @@ Public Class register
 
     End Sub
 
+    Private Sub register_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Application.Exit()
+    End Sub
 
 End Class

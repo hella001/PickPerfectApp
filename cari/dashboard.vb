@@ -16,4 +16,15 @@
         Me.Hide()
         hitungForm.Show()
     End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Dim keluarForm As New login()
+        Me.Close()
+        keluarForm.Show()
+    End Sub
+
+    Private Sub dashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Application.Exit()
+    End Sub
+
 End Class

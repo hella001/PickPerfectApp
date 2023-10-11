@@ -23,16 +23,17 @@ Partial Class dashboard
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim Label5 As System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(dashboard))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.btnCetak = New System.Windows.Forms.Button()
         Me.btnSeleksi = New System.Windows.Forms.Button()
         Me.btnKriteria = New System.Windows.Forms.Button()
         Me.btnData = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
         Label5 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -83,9 +84,9 @@ Partial Class dashboard
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(445, 69)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(51, 20)
+        Me.Label4.Size = New System.Drawing.Size(54, 20)
         Me.Label4.TabIndex = 8
-        Me.Label4.Text = "Cetak"
+        Me.Label4.Text = "Keluar"
         '
         'GroupBox1
         '
@@ -107,16 +108,6 @@ Partial Class dashboard
         Me.Label6.Size = New System.Drawing.Size(368, 73)
         Me.Label6.TabIndex = 1
         Me.Label6.Text = "PickPerfect"
-        '
-        'btnCetak
-        '
-        Me.btnCetak.BackgroundImage = Global.cari.My.Resources.Resources.cetak
-        Me.btnCetak.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnCetak.Location = New System.Drawing.Point(432, 12)
-        Me.btnCetak.Name = "btnCetak"
-        Me.btnCetak.Size = New System.Drawing.Size(75, 54)
-        Me.btnCetak.TabIndex = 3
-        Me.btnCetak.UseVisualStyleBackColor = True
         '
         'btnSeleksi
         '
@@ -148,22 +139,33 @@ Partial Class dashboard
         Me.btnData.TabIndex = 0
         Me.btnData.UseVisualStyleBackColor = True
         '
+        'Button5
+        '
+        Me.Button5.BackgroundImage = CType(resources.GetObject("Button5.BackgroundImage"), System.Drawing.Image)
+        Me.Button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button5.Location = New System.Drawing.Point(434, 12)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(75, 54)
+        Me.Button5.TabIndex = 24
+        Me.Button5.UseVisualStyleBackColor = True
+        '
         'dashboard
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1350, 729)
+        Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.btnCetak)
         Me.Controls.Add(Me.btnSeleksi)
         Me.Controls.Add(Me.btnKriteria)
         Me.Controls.Add(Me.btnData)
         Me.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "dashboard"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Dashboard- PickPerfect"
@@ -178,11 +180,11 @@ Partial Class dashboard
     Friend WithEvents btnData As Button
     Friend WithEvents btnKriteria As Button
     Friend WithEvents btnSeleksi As Button
-    Friend WithEvents btnCetak As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label6 As Label
+    Friend WithEvents Button5 As Button
 End Class

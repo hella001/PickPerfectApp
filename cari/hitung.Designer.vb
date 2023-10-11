@@ -22,6 +22,7 @@ Partial Class hitung
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(hitung))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnHitung = New System.Windows.Forms.Button()
         Me.txtPhi = New System.Windows.Forms.TextBox()
@@ -38,10 +39,10 @@ Partial Class hitung
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.Button4 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -180,9 +181,9 @@ Partial Class hitung
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(407, 69)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(51, 20)
+        Me.Label4.Size = New System.Drawing.Size(54, 20)
         Me.Label4.TabIndex = 26
-        Me.Label4.Text = "Cetak"
+        Me.Label4.Text = "Keluar"
         '
         'Label3
         '
@@ -214,16 +215,6 @@ Partial Class hitung
         Me.Label12.TabIndex = 23
         Me.Label12.Text = "Grafik"
         '
-        'Button4
-        '
-        Me.Button4.BackgroundImage = Global.cari.My.Resources.Resources.cetak
-        Me.Button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.Button4.Location = New System.Drawing.Point(394, 12)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 54)
-        Me.Button4.TabIndex = 22
-        Me.Button4.UseVisualStyleBackColor = True
-        '
         'Button3
         '
         Me.Button3.BackgroundImage = Global.cari.My.Resources.Resources.seleksi
@@ -254,21 +245,32 @@ Partial Class hitung
         Me.Button1.TabIndex = 19
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'Button4
+        '
+        Me.Button4.BackgroundImage = CType(resources.GetObject("Button4.BackgroundImage"), System.Drawing.Image)
+        Me.Button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button4.Location = New System.Drawing.Point(396, 12)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(75, 54)
+        Me.Button4.TabIndex = 28
+        Me.Button4.UseVisualStyleBackColor = True
+        '
         'hitung
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1350, 729)
+        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label12)
-        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "hitung"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -290,7 +292,6 @@ Partial Class hitung
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label12 As Label
-    Friend WithEvents Button4 As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Button1 As Button
@@ -302,4 +303,5 @@ Partial Class hitung
     Friend WithEvents Label7 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents Label5 As Label
+    Friend WithEvents Button4 As Button
 End Class

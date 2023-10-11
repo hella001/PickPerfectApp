@@ -22,6 +22,7 @@ Partial Class kriteria
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(kriteria))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -212,11 +213,11 @@ Partial Class kriteria
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(412, 69)
+        Me.Label4.Location = New System.Drawing.Point(411, 69)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(51, 20)
+        Me.Label4.Size = New System.Drawing.Size(54, 20)
         Me.Label4.TabIndex = 26
-        Me.Label4.Text = "Cetak"
+        Me.Label4.Text = "Keluar"
         '
         'Label3
         '
@@ -250,7 +251,7 @@ Partial Class kriteria
         '
         'Button4
         '
-        Me.Button4.BackgroundImage = Global.cari.My.Resources.Resources.cetak
+        Me.Button4.BackgroundImage = CType(resources.GetObject("Button4.BackgroundImage"), System.Drawing.Image)
         Me.Button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.Button4.Location = New System.Drawing.Point(399, 12)
         Me.Button4.Name = "Button4"
@@ -303,6 +304,7 @@ Partial Class kriteria
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "kriteria"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

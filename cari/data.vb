@@ -43,41 +43,73 @@ Public Class data
         chartArea.Name = "ChartArea1"
         Chart1.ChartAreas.Add(chartArea)
 
-        ' Tambahkan seri untuk MAE
-        Dim seriesMAE As New Series()
-        seriesMAE.Name = "MAE"
-        seriesMAE.ChartType = SeriesChartType.Line
-        seriesMAE.BorderWidth = 2
-        Chart1.Series.Add(seriesMAE)
+        ' Tambahkan seri untuk Total Penjualan
+        Dim seriesTotalPenjualan As New Series()
+        seriesTotalPenjualan.Name = "Total Penjualan"
+        seriesTotalPenjualan.ChartType = SeriesChartType.Line   'Menggunakan grafik garis
+        'seriesTotalPenjualan.ChartType = SeriesChartType.Column ' Menggunakan grafik batang
+        seriesTotalPenjualan.BorderWidth = 2
+        Chart1.Series.Add(seriesTotalPenjualan)
 
-        ' Tambahkan seri untuk MSE
-        Dim seriesMSE As New Series()
-        seriesMSE.Name = "MSE"
-        seriesMSE.ChartType = SeriesChartType.Line
-        seriesMSE.BorderWidth = 2
-        Chart1.Series.Add(seriesMSE)
+        ' Tambahkan seri untuk Forecast
+        Dim seriesForecast As New Series()
+        seriesForecast.Name = "Forecast"
+        seriesForecast.ChartType = SeriesChartType.Line  'Menggunakan grafik garis
+        'seriesForecast.ChartType = SeriesChartType.Column ' Menggunakan grafik batang
+        seriesForecast.BorderWidth = 2
+        Chart1.Series.Add(seriesForecast)
 
-        ' Tambahkan seri untuk MAPE
-        Dim seriesMAPE As New Series()
-        seriesMAPE.Name = "MAPE"
-        seriesMAPE.ChartType = SeriesChartType.Line
-        seriesMAPE.BorderWidth = 2
-        Chart1.Series.Add(seriesMAPE)
-
-        ' Isi data dari DataGridView ke chart
+        ' Isi data dari DataGridView ke Chart
         For Each row As DataGridViewRow In DataGridView1.Rows
             If Not row.IsNewRow Then
                 Dim bulan As String = row.Cells("Bulan").Value.ToString()
-                Dim mae As Double = Convert.ToDouble(row.Cells("MAE").Value)
-                Dim mse As Double = Convert.ToDouble(row.Cells("MSE").Value)
-                Dim mape As Double = Convert.ToDouble(row.Cells("MAPE").Value)
+                Dim totalPenjualan As Double = Convert.ToDouble(row.Cells("Total Penjualan").Value)
+                Dim forecast As Double = Convert.ToDouble(row.Cells("Forecast").Value)
 
                 ' Tambahkan data ke seri yang sesuai
-                Chart1.Series("MAE").Points.AddXY(bulan, mae)
-                Chart1.Series("MSE").Points.AddXY(bulan, mse)
-                Chart1.Series("MAPE").Points.AddXY(bulan, mape)
+                Chart1.Series("Total Penjualan").Points.AddXY(bulan, totalPenjualan)
+                Chart1.Series("Forecast").Points.AddXY(bulan, forecast)
             End If
         Next
+
+        'Mengatur font bulan
+        Chart1.ChartAreas("ChartArea1").AxisX.LabelStyle.Font = New Font("Arial", 10)
+
+        '' Tambahkan seri untuk MAE
+        'Dim seriesmae As New Series()
+        'seriesmae.Name = "mae"
+        'seriesmae.ChartType = SeriesChartType.Line
+        'seriesmae.BorderWidth = 2
+        'Chart1.Series.Add(seriesmae)
+
+        '' Tambahkan seri untuk MSE
+        'Dim seriesMSE As New Series()
+        'seriesMSE.Name = "MSE"
+        'seriesMSE.ChartType = SeriesChartType.Line
+        'seriesMSE.BorderWidth = 2
+        'Chart1.Series.Add(seriesMSE)
+
+        '' Tambahkan seri untuk MAPE
+        'Dim seriesMAPE As New Series()
+        'seriesMAPE.Name = "MAPE"
+        'seriesMAPE.ChartType = SeriesChartType.Line
+        'seriesMAPE.BorderWidth = 2
+        'Chart1.Series.Add(seriesMAPE)
+
+        '' Isi data dari DataGridView ke chart
+        'For Each row As DataGridViewRow In DataGridView1.Rows
+        '    If Not row.IsNewRow Then
+        '        Dim bulan As String = row.Cells("Bulan").Value.ToString()
+        '        Dim mae As Double = Convert.ToDouble(row.Cells("MAE").Value)
+        '        Dim mse As Double = Convert.ToDouble(row.Cells("MSE").Value)
+        '        Dim mape As Double = Convert.ToDouble(row.Cells("MAPE").Value)
+
+        '        ' Tambahkan data ke seri yang sesuai
+        '        Chart1.Series("MAE").Points.AddXY(bulan, mae)
+        '        Chart1.Series("MSE").Points.AddXY(bulan, mse)
+        '        Chart1.Series("MAPE").Points.AddXY(bulan, mape)
+        '    End If
+        'Next
     End Sub
 
     Private Sub data_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -176,4 +208,19 @@ Public Class data
         End Using
     End Sub
 
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Dim cetakForm As New cetak()
+        'Me.Hide()
+        cetakForm.ShowDialog()
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Dim keluarForm As New login()
+        Me.Hide()
+        keluarForm.Show()
+    End Sub
+
+    Private Sub data_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Application.Exit()
+    End Sub
 End Class
