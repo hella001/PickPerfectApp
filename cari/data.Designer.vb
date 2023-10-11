@@ -38,12 +38,10 @@ Partial Class data
         Me.Label5 = New System.Windows.Forms.Label()
         Me.btnHapus = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Button4 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -79,9 +77,9 @@ Partial Class data
         Me.txtMape.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtMape.Location = New System.Drawing.Point(126, 465)
         Me.txtMape.Name = "txtMape"
-        Me.txtMape.Size = New System.Drawing.Size(18, 20)
+        Me.txtMape.Size = New System.Drawing.Size(36, 20)
         Me.txtMape.TabIndex = 11
-        Me.txtMape.Text = "0"
+        Me.txtMape.Text = "0 %"
         '
         'txtMse
         '
@@ -89,9 +87,9 @@ Partial Class data
         Me.txtMse.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtMse.Location = New System.Drawing.Point(126, 435)
         Me.txtMse.Name = "txtMse"
-        Me.txtMse.Size = New System.Drawing.Size(18, 20)
+        Me.txtMse.Size = New System.Drawing.Size(36, 20)
         Me.txtMse.TabIndex = 10
-        Me.txtMse.Text = "0"
+        Me.txtMse.Text = "0 %"
         '
         'txtMae
         '
@@ -99,9 +97,9 @@ Partial Class data
         Me.txtMae.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtMae.Location = New System.Drawing.Point(126, 405)
         Me.txtMae.Name = "txtMae"
-        Me.txtMae.Size = New System.Drawing.Size(18, 20)
+        Me.txtMae.Size = New System.Drawing.Size(36, 20)
         Me.txtMae.TabIndex = 9
-        Me.txtMae.Text = "0"
+        Me.txtMae.Text = "0 %"
         '
         'Label8
         '
@@ -178,16 +176,6 @@ Partial Class data
         Me.DataGridView1.Size = New System.Drawing.Size(749, 316)
         Me.DataGridView1.TabIndex = 1
         '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(416, 69)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(51, 20)
-        Me.Label4.TabIndex = 17
-        Me.Label4.Text = "Cetak"
-        '
         'Label3
         '
         Me.Label3.AutoSize = True
@@ -220,16 +208,6 @@ Partial Class data
         '
         'Timer1
         '
-        '
-        'Button4
-        '
-        Me.Button4.BackgroundImage = Global.cari.My.Resources.Resources.cetak
-        Me.Button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.Button4.Location = New System.Drawing.Point(403, 12)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 54)
-        Me.Button4.TabIndex = 13
-        Me.Button4.UseVisualStyleBackColor = True
         '
         'Button3
         '
@@ -265,7 +243,7 @@ Partial Class data
         '
         Me.Button5.BackgroundImage = CType(resources.GetObject("Button5.BackgroundImage"), System.Drawing.Image)
         Me.Button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.Button5.Location = New System.Drawing.Point(498, 12)
+        Me.Button5.Location = New System.Drawing.Point(403, 12)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(75, 54)
         Me.Button5.TabIndex = 23
@@ -275,7 +253,7 @@ Partial Class data
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(509, 69)
+        Me.Label9.Location = New System.Drawing.Point(414, 69)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(54, 20)
         Me.Label9.TabIndex = 24
@@ -290,11 +268,9 @@ Partial Class data
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
@@ -314,11 +290,9 @@ Partial Class data
 
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents Button4 As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Button1 As Button

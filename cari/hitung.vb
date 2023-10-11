@@ -16,76 +16,93 @@ Public Class hitung
             If Double.TryParse(txtPhi.Text, a) Then
                 ' Input 'a' valid, lanjutkan perhitungan
 
-                ' Ambil data penjualan dari database
-                Dim dataPenjualan As New List(Of Double)()
+                ' Cek data dalam database
+                Dim dataPenjualanCount As Integer = 0
                 Call connect()
-                Dim query As String = "SELECT penjualan FROM data_penjualan"
-                Using cmd As New MySqlCommand(query, conn)
-                    'conn.Open()
-                    Using reader As MySqlDataReader = cmd.ExecuteReader()
-                        While reader.Read()
-                            dataPenjualan.Add(Double.Parse(reader("penjualan").ToString()))
-                        End While
-                    End Using
+                Dim queryDataPenjualanCount As String = "SELECT COUNT(*) FROM data_penjualan"
+                Using cmdDataPenjualanCount As New MySqlCommand(queryDataPenjualanCount, conn)
+                    dataPenjualanCount = Convert.ToInt32(cmdDataPenjualanCount.ExecuteScalar())
                 End Using
 
-                Dim forecast As New List(Of Double)()
-                Dim actual As New List(Of Double)()
+                If dataPenjualanCount > 0 Then
+                    ' Data penjualan ada, lanjutkan perhitungan
 
-                Dim totalAbsoluteError As Double = 0.0
-                Dim totalSquaredError As Double = 0.0
+                    ' Ambil data penjualan dari database
+                    Dim dataPenjualan As New List(Of Double)()
+                    Call connect()
+                    Dim query As String = "SELECT penjualan FROM data_penjualan"
+                    Using cmd As New MySqlCommand(query, conn)
+                        Using reader As MySqlDataReader = cmd.ExecuteReader()
+                            While reader.Read()
+                                dataPenjualan.Add(Double.Parse(reader("penjualan").ToString()))
+                            End While
+                        End Using
+                    End Using
 
-                ' Inisialisasi kolom-kolom DataGridView
-                DataGridView1.Columns.Clear()
-                DataGridView1.Columns.Add("Bulan", "Bulan")
-                DataGridView1.Columns.Add("Penjualan", "Penjualan")
-                DataGridView1.Columns.Add("Nilai a", "Nilai a")
-                DataGridView1.Columns.Add("Forecast", "Forecast")
-                DataGridView1.Columns.Add("MAE", "MAE")
-                DataGridView1.Columns.Add("MSE", "MSE")
-                DataGridView1.Columns.Add("MAPE", "MAPE")
+                    Dim forecast As New List(Of Double)()
+                    Dim actual As New List(Of Double)()
 
-                Dim monthNames As String() = New DateTimeFormatInfo().MonthNames ' Nama-nama bulan
-                For i As Integer = 0 To dataPenjualan.Count - 1
-                    If i = 0 Then
-                        forecast.Add(dataPenjualan(i))
-                    Else
-                        Dim forecastValue As Double = a * dataPenjualan(i - 1) + (1 - a) * forecast(i - 1)
-                        forecast.Add(forecastValue)
-                    End If
+                    Dim totalAbsoluteError As Double = 0.0
+                    Dim totalSquaredError As Double = 0.0
 
-                    ' Menghitung MAE
-                    Dim absoluteError As Double = Math.Abs(forecast(i) - dataPenjualan(i))
-                    totalAbsoluteError += absoluteError
-                    maeValues.Add(absoluteError)
+                    ' Inisialisasi kolom-kolom DataGridView
+                    DataGridView1.Columns.Clear()
+                    DataGridView1.Columns.Add("Bulan", "Bulan")
+                    DataGridView1.Columns.Add("Penjualan", "Penjualan")
+                    DataGridView1.Columns.Add("Nilai a", "Nilai a")
+                    DataGridView1.Columns.Add("Forecast", "Forecast")
+                    DataGridView1.Columns.Add("MAE", "MAE")
+                    DataGridView1.Columns.Add("MSE", "MSE")
+                    DataGridView1.Columns.Add("MAPE", "MAPE")
 
-                    ' Menghitung MSE
-                    Dim squaredError As Double = Math.Pow(forecast(i) - dataPenjualan(i), 2)
-                    totalSquaredError += squaredError
-                    mseValues.Add(squaredError)
+                    Dim monthNames As String() = New DateTimeFormatInfo().MonthNames ' Nama-nama bulan
+                    Dim maeValues As New List(Of Double)()
+                    Dim mseValues As New List(Of Double)()
+                    Dim mapeValues As New List(Of Double)()
 
-                    actual.Add(dataPenjualan(i))
-                Next
+                    For i As Integer = 0 To dataPenjualan.Count - 1
+                        If i = 0 Then
+                            forecast.Add(dataPenjualan(i))
+                        Else
+                            Dim forecastValue As Double = a * dataPenjualan(i - 1) + (1 - a) * forecast(i - 1)
+                            forecast.Add(forecastValue)
+                        End If
 
-                Dim mae As Double = totalAbsoluteError / dataPenjualan.Count
-                Dim mse As Double = totalSquaredError / dataPenjualan.Count
+                        ' Menghitung MAE
+                        Dim absoluteError As Double = Math.Abs(forecast(i) - dataPenjualan(i))
+                        totalAbsoluteError += absoluteError
+                        maeValues.Add(absoluteError)
 
-                Dim mape As Double = 0.0
-                For i As Integer = 0 To dataPenjualan.Count - 1
-                    mapeValues.Add((Math.Abs(actual(i) - forecast(i)) / actual(i)) * 100)
-                    mape += mapeValues(i)
-                Next
-                mape /= dataPenjualan.Count
+                        ' Menghitung MSE
+                        Dim squaredError As Double = Math.Pow(forecast(i) - dataPenjualan(i), 2)
+                        totalSquaredError += squaredError
+                        mseValues.Add(squaredError)
 
-                ' Mengisi DataGridView dengan hasil perhitungan
-                DataGridView1.Rows.Clear()
-                For i As Integer = 0 To dataPenjualan.Count - 1
-                    Dim monthName As String = monthNames(i) ' Mengambil nama bulan berdasarkan indeks
-                    DataGridView1.Rows.Add(monthName, dataPenjualan(i), a, forecast(i), maeValues(i), mseValues(i), mapeValues(i))
-                    'DataGridView1.Refresh()
-                Next
+                        actual.Add(dataPenjualan(i))
+                    Next
 
-                MessageBox.Show("Perhitungan selesai.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Dim mae As Double = totalAbsoluteError / dataPenjualan.Count
+                    Dim mse As Double = totalSquaredError / dataPenjualan.Count
+
+                    Dim mape As Double = 0.0
+                    For i As Integer = 0 To dataPenjualan.Count - 1
+                        mapeValues.Add((Math.Abs(actual(i) - forecast(i)) / actual(i)) * 100)
+                        mape += mapeValues(i)
+                    Next
+                    mape /= dataPenjualan.Count
+
+                    ' Mengisi DataGridView dengan hasil perhitungan
+                    DataGridView1.Rows.Clear()
+                    For i As Integer = 0 To dataPenjualan.Count - 1
+                        Dim monthName As String = monthNames(i) ' Mengambil nama bulan berdasarkan indeks
+                        DataGridView1.Rows.Add(monthName, dataPenjualan(i), a, forecast(i), maeValues(i), mseValues(i), mapeValues(i))
+                        'DataGridView1.Refresh()
+                    Next
+
+                    MessageBox.Show("Perhitungan selesai.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Else
+                    MessageBox.Show("Anda belum mengisi data penjualan. Harap tambahkan data penjualan sebelum melakukan perhitungan.", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
             Else
                 MessageBox.Show("Nilai 'a' yang dimasukkan tidak valid. Harap masukkan nilai yang benar.", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
@@ -245,7 +262,7 @@ Public Class hitung
         keluarForm.Show()
     End Sub
 
-    Private Sub hitung_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        Application.Exit()
-    End Sub
+    'Private Sub hitung_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+    '    Application.Exit()
+    'End Sub
 End Class

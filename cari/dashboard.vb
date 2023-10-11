@@ -23,8 +23,8 @@
         keluarForm.Show()
     End Sub
 
-    Private Sub dashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        Application.Exit()
-    End Sub
+    'Private Sub dashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+    '    Application.Exit()
+    'End Sub
 
 End Class

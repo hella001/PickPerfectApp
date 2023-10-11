@@ -184,7 +184,7 @@ Public Class kriteria
         keluarForm.Show()
     End Sub
 
-    Private Sub kriteria_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        Application.Exit()
-    End Sub
+    'Private Sub kriteria_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+    '    Application.Exit()
+    'End Sub
 End Class

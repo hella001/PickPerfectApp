@@ -46,6 +46,7 @@ Partial Class kriteria
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -67,6 +68,7 @@ Partial Class kriteria
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.Gainsboro
+        Me.Panel2.Controls.Add(Me.Label7)
         Me.Panel2.Controls.Add(Me.Label11)
         Me.Panel2.Controls.Add(Me.Label10)
         Me.Panel2.Controls.Add(Me.DataGridView1)
@@ -289,6 +291,16 @@ Partial Class kriteria
         Me.Button1.TabIndex = 19
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(62, 250)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(316, 16)
+        Me.Label7.TabIndex = 3
+        Me.Label7.Text = "Hapus, Klik hapus maka semua data akan terhapus."
+        '
         'kriteria
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -345,4 +357,5 @@ Partial Class kriteria
     Friend WithEvents Label11 As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents Label7 As Label
 End Class

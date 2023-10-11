@@ -99,20 +99,20 @@ Partial Class hitung
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.Location = New System.Drawing.Point(171, 352)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(348, 20)
+        Me.Label10.Size = New System.Drawing.Size(310, 20)
         Me.Label10.TabIndex = 9
         Me.Label10.Text = "dalam menginputkan pada kolom dibawah."
         '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.Location = New System.Drawing.Point(171, 332)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(421, 20)
+        Me.Label9.Size = New System.Drawing.Size(370, 20)
         Me.Label9.TabIndex = 8
         Me.Label9.Text = "Pada kolom input a harap tuliskan koma bukan titik "
         '
@@ -129,20 +129,20 @@ Partial Class hitung
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(375, 312)
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(350, 312)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(217, 20)
+        Me.Label7.Size = New System.Drawing.Size(191, 20)
         Me.Label7.TabIndex = 6
         Me.Label7.Text = "Sebagai contoh a= ( 0,1 )."
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.Location = New System.Drawing.Point(171, 312)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(211, 20)
+        Me.Label6.Size = New System.Drawing.Size(185, 20)
         Me.Label6.TabIndex = 5
         Me.Label6.Text = "Nilai (a) harus dibawah 1."
         '

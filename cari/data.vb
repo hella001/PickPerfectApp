@@ -154,9 +154,9 @@ Public Class data
             End Using
 
             ' Mengatur teks label menjadi "0"
-            txtMae.Text = "0"
-            txtMse.Text = "0"
-            txtMape.Text = "0"
+            txtMae.Text = "0 %"
+            txtMse.Text = "0 %"
+            txtMape.Text = "0 %"
 
             MessageBox.Show("Seluruh data berhasil dihapus.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
@@ -197,9 +197,9 @@ Public Class data
             Using reader As MySqlDataReader = cmd.ExecuteReader()
                 If reader.Read() Then
                     ' Isi label-label dengan data dari database rata_rata
-                    txtMae.Text = reader("mae").ToString()
-                    txtMse.Text = reader("mse").ToString()
-                    txtMape.Text = reader("mape").ToString()
+                    txtMae.Text = reader("mae").ToString() & " %"
+                    txtMse.Text = reader("mse").ToString() & " %"
+                    txtMape.Text = reader("mape").ToString() & "%"
                 End If
             End Using
 
@@ -208,11 +208,11 @@ Public Class data
         End Using
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Dim cetakForm As New cetak()
-        'Me.Hide()
-        cetakForm.ShowDialog()
-    End Sub
+    'Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+    '    Dim cetakForm As New cetak()
+    '    'Me.Hide()
+    '    cetakForm.ShowDialog()
+    'End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         Dim keluarForm As New login()
@@ -220,7 +220,7 @@ Public Class data
         keluarForm.Show()
     End Sub
 
-    Private Sub data_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        Application.Exit()
-    End Sub
+    'Private Sub data_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+    '    Application.Exit()
+    'End Sub
 End Class
